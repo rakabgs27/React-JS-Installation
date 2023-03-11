@@ -1,4 +1,4 @@
-# React-JS-Installation
+# 1.1. Start a new React Project
 
 1.Installation <br>
 ![image](https://user-images.githubusercontent.com/95867776/224480110-e38d5de4-b313-491d-9b10-1391d377a700.png)
