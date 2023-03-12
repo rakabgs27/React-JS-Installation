@@ -1,23 +1,86 @@
-# 01.2. Add React to a Website
+# 02.1 Your First Component
 
-React telah dirancang dari awal untuk adopsi bertahap. Sebagian besar situs web tidak (dan tidak perlu) dibangun sepenuhnya dengan React. Panduan ini menunjukkan bagaimana menambahkan beberapa "sprinkles of interactivity" ke halaman HTML yang sudah ada.
+Komponen adalah salah satu konsep inti dari React. Mereka adalah dasar untuk membangun antarmuka pengguna (UI), sehingga membuatnya menjadi tempat yang tepat untuk memulai perjalanan React!
 
-# Step 01 : Add a toot HTML tag
-![image](https://user-images.githubusercontent.com/95867776/224518917-799cb2c8-d723-464e-a855-4b941df62ebd.png) <br>
-Istilah "root" digunakan karena di sinilah pohon React akan dimulai. Anda dapat menempatkan tag HTML "root" seperti ini di mana saja di dalam tag <body>. Biarkan kosong karena React akan menggantikan isinya dengan komponen React Anda.
+# Defining Component
+Secara tradisional, ketika membuat halaman web, pengembang web menandai konten mereka dan kemudian menambahkan interaksi dengan menambahkan sedikit JavaScript. Ini berfungsi dengan baik ketika interaksi hanyalah kebutuhan yang bagus di web. Sekarang interaksi diharapkan untuk banyak situs dan semua aplikasi. React menempatkan interaktivitas terlebih dahulu sambil tetap menggunakan teknologi yang sama: komponen React adalah fungsi JavaScript yang dapat Anda tambahkan markup-nya.<br>
+```
+export default function Profile() {
+  return (
+    <img
+      src="https://i.imgur.com/MK3eW3Am.jpg"
+      alt="Katherine Johnson"
+    />
+  )
+}
+```
+## Hasil 
+![image](https://user-images.githubusercontent.com/95867776/224523860-919fb1b5-564b-40b6-bbdb-dc0d12dc8ecc.png) <br><br>
+Cara Membuat Component : 
+# Step 01 : Export the component
+Awalan "export default" adalah sintaks standar JavaScript (tidak spesifik untuk React). Ini memungkinkan Anda menandai fungsi utama dalam sebuah file sehingga Anda dapat mengimpornya dari file lain di kemudian hari. 
 
-# Step 02 : Add the script tags
-![image](https://user-images.githubusercontent.com/95867776/224519043-415d0620-1ec5-46f0-a29e-3ea82f5969ef.png)
-Pada halaman HTML, tepat sebelum tag penutup </body>, tambahkan tiga tag <script> untuk file-file berikut:
+# Step 02 : Define the function
+Dengan function Profile() { } Anda mendefinisikan sebuah fungsi JavaScript dengan nama Profile.
 
-react.development.js memungkinkan Anda untuk mendefinisikan komponen React. <br>
-react-dom.development.js memungkinkan React merender elemen HTML ke DOM. <br>
-like-button.js adalah tempat di mana Anda akan menulis komponen pada langkah berikutnya! <br>
+NB : 
+Komponen React adalah fungsi JavaScript biasa, tetapi nama mereka harus diawali dengan huruf kapital atau mereka tidak akan berfungsi!
 
-# Step 03 : Create a React Component
-Anda diminta untuk membuat sebuah file bernama like-button.js di samping file HTML Anda dan menambahkan potongan kode berikut, lalu menyimpan file tersebut. Potongan kode ini mendefinisikan sebuah komponen React yang disebut LikeButton. <br>
-![image](https://user-images.githubusercontent.com/95867776/224519824-04c49b1a-a5ad-4475-9e4b-5af04c07dc68.png)
+# Step 03 : Add markup
+Komponen mengembalikan tag <img /> dengan atribut src dan alt. <img /> ditulis seperti HTML, tetapi sebenarnya itu adalah JavaScript di bawah kap, sintaks ini disebut JSX, dan memungkinkan Anda menyematkan markup di dalam JavaScript.
 
-# Step 04 : Add your React component to the page
-Terakhir, tambahkan tiga baris kode pada akhir file like-button.js. Baris kode ini akan mencari <div> yang telah Anda tambahkan pada langkah pertama di file HTML, membuat sebuah root React, dan menampilkan komponen React "Like" button di dalamnya. <br>
-![image](https://user-images.githubusercontent.com/95867776/224519856-6e041d85-bcd6-4cab-b93b-2ab5dcf5148a.png)
+Pernyataan return dapat ditulis dalam satu baris, seperti dalam komponen ini:
+```
+return <img src="https://i.imgur.com/MK3eW3As.jpg" alt="Katherine Johnson" />;
+```
+Tetapi jika markup Anda tidak semuanya berada dalam satu baris dengan kata kunci return, Anda harus membungkusnya dalam sepasang tanda kurung seperti ini:
+```
+return (
+  <div>
+    <img src="https://i.imgur.com/MK3eW3As.jpg" alt="Katherine Johnson" />
+  </div>
+);
+```
+NB : Tanpa tanda kurung, kode apapun pada baris setelah return akan diabaikan!
+
+# Using Component
+Sekarang setelah Anda telah mendefinisikan komponen Profile Anda, Anda dapat menempatkannya di dalam komponen lain. Misalnya, Anda dapat mengekspor komponen Galeri yang menggunakan beberapa komponen Profile:
+```
+function Profile() {
+  return (
+    <img
+      src="https://i.imgur.com/MK3eW3As.jpg"
+      alt="Katherine Johnson"
+    />
+  );
+}
+
+export default function Gallery() {
+  return (
+    <section>
+      <h1>Amazing scientists</h1>
+      <Profile />
+      <Profile />
+      <Profile />
+    </section>
+  );
+}
+```
+## Hasil
+![image](https://user-images.githubusercontent.com/95867776/224524156-a653c2f1-381b-46f7-8d89-d32fc7fce13c.png)<br><br>
+
+
+## What the browser sees
+Perhatikan perbedaan pada huruf besar kecilnya:
+
+tag section ditulis dengan huruf kecil, sehingga React tahu bahwa kita mengacu pada tag HTML.<br>
+tag Profile diawali dengan huruf kapital P, sehingga React tahu bahwa kita ingin menggunakan komponen kita yang bernama Profile.<br>
+Dan Profile berisi bahkan lebih banyak HTML: <img />. Pada akhirnya, inilah yang dilihat oleh browser:
+```
+ <section>
+  <h1>Amazing scientists</h1>
+  <img src="https://i.imgur.com/MK3eW3As.jpg" alt="Katherine Johnson" />
+  <img src="https://i.imgur.com/MK3eW3As.jpg" alt="Katherine Johnson" />
+  <img src="https://i.imgur.com/MK3eW3As.jpg" alt="Katherine Johnson" />
+</section>
+```
