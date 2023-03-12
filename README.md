@@ -1,26 +1,23 @@
-# 1.1. Start a new React Project
+# 01.2. Add React to a Website
 
-1.Install Node JS <br>
-![image](https://user-images.githubusercontent.com/95867776/224517504-94cbb6ae-ff99-4613-9218-c437654ac24c.png)
+React telah dirancang dari awal untuk adopsi bertahap. Sebagian besar situs web tidak (dan tidak perlu) dibangun sepenuhnya dengan React. Panduan ini menunjukkan bagaimana menambahkan beberapa "sprinkles of interactivity" ke halaman HTML yang sudah ada.
 
-2.Check Version Node JS <br>
-![image](https://user-images.githubusercontent.com/95867776/224517541-8e17661e-bd8a-4501-b135-dd18d486b651.png)
+# Step 01 : Add a toot HTML tag
+![image](https://user-images.githubusercontent.com/95867776/224518917-799cb2c8-d723-464e-a855-4b941df62ebd.png) <br>
+Istilah "root" digunakan karena di sinilah pohon React akan dimulai. Anda dapat menempatkan tag HTML "root" seperti ini di mana saja di dalam tag <body>. Biarkan kosong karena React akan menggantikan isinya dengan komponen React Anda.
 
-3.Check Version NPM <br>
-![image](https://user-images.githubusercontent.com/95867776/224517576-f3d89593-7acb-41c0-8fd5-e0eadbbe1005.png)
+# Step 02 : Add the script tags
+![image](https://user-images.githubusercontent.com/95867776/224519043-415d0620-1ec5-46f0-a29e-3ea82f5969ef.png)
+Pada halaman HTML, tepat sebelum tag penutup </body>, tambahkan tiga tag <script> untuk file-file berikut:
 
-4.Check Version NPX <br>
-![image](https://user-images.githubusercontent.com/95867776/224517607-682c7146-d8a2-480a-9066-90fa43c2a243.png)
+react.development.js memungkinkan Anda untuk mendefinisikan komponen React. <br>
+react-dom.development.js memungkinkan React merender elemen HTML ke DOM. <br>
+like-button.js adalah tempat di mana Anda akan menulis komponen pada langkah berikutnya! <br>
 
-5.Create New Project <br>
-![image](https://user-images.githubusercontent.com/95867776/224517651-69ffe47e-9476-47de-b445-7a39d20262ee.png)
+# Step 03 : Create a React Component
+Anda diminta untuk membuat sebuah file bernama like-button.js di samping file HTML Anda dan menambahkan potongan kode berikut, lalu menyimpan file tersebut. Potongan kode ini mendefinisikan sebuah komponen React yang disebut LikeButton. <br>
+![image](https://user-images.githubusercontent.com/95867776/224519824-04c49b1a-a5ad-4475-9e4b-5af04c07dc68.png)
 
-6.Open Project in VSCode <br>
-![image](https://user-images.githubusercontent.com/95867776/224517758-2d5c5a94-cde2-4cc1-a92d-d0a2b15cd239.png) <br>
-![image](https://user-images.githubusercontent.com/95867776/224517743-25c9321d-9350-4141-b458-e31d8afb1230.png)
-
-7.Running Project <br>
-![image](https://user-images.githubusercontent.com/95867776/224517805-d7c040bb-5b92-4038-9336-4445d6662200.png)
-
-8.Open Project in Google Chrome <br>
-![image](https://user-images.githubusercontent.com/95867776/224517812-33173556-5b5a-4e10-b0f6-bb5827bbaafe.png)
+# Step 04 : Add your React component to the page
+Terakhir, tambahkan tiga baris kode pada akhir file like-button.js. Baris kode ini akan mencari <div> yang telah Anda tambahkan pada langkah pertama di file HTML, membuat sebuah root React, dan menampilkan komponen React "Like" button di dalamnya. <br>
+![image](https://user-images.githubusercontent.com/95867776/224519856-6e041d85-bcd6-4cab-b93b-2ab5dcf5148a.png)
